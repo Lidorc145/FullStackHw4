@@ -1,70 +1,58 @@
 import React from 'react';
-import Articles from "./Articles";
+import {
+    BrowserRouter as Router,
+    Redirect,
+    Switch,
+    Route
+} from "react-router-dom";
+
 import './App.css';
+import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
+import Home from './Pages/Home/Home';
+import AboutMe from './Pages/AboutMe/AboutMe';
+import NewPost from "./Pages/Posts/NewPost";
+import PostPage from "./Pages/Posts/PostPage";
+import Login from "./Pages/Login/Login";
 
 
-function App() {
-    return (
-        <div className="App" >
-            <header>
-                <NavBar />
-            </header>
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state ={
+            username: null,
+        };
+        this.onLogin = this.onLogin.bind(this)
+    }
+    onLogin(props){
+        this.setState({username: props});
+    }
 
-            <article className="mainColumn">
-                <h1>This is my blog</h1>
-                <Articles />
 
+    render(){
+        console.log('user is:' +this.state.username);
 
-            </article>
-
-            <aside className="sideColumn">
-                <Latest />
-                <hr className="divider" />
-                <Popular />
-            </aside>
-
-            <footer>
-                Lidor Cohen
-            </footer>
-        </div>
-);
-}
-
-function NavBar(){
-    return(
-        <nav>
-            <ul>
-                <li><a href="#Home">Home</a></li>
-                <li className="navBorder">|</li>
-                <li><a href="#AboutMe">About Me</a></li>
-                <li className="navBorder">|</li>
-                <li><a href="#ContactMe">Contact Me</a></li>
-                <li className="rightLi"><a href="#Login">Login</a></li>
-            </ul>
-        </nav>
-    );
-}
-
-function Popular() {
-    return(
-        <div>
-            <h1>Popular</h1>
-            <p>Blog post #3 <a href="#post">go to page</a></p>
-            <p>Blog post #1 <a href="#post">go to page</a></p>
-            <p>Blog post #2 <a href="#post">go to page</a></p>
-        </div>
-    );
+        return (
+            <div className="App" >
+                <Router>
+                    <header>
+                        <NavBar username={this.state.username} />
+                    </header>
+                    <Switch>
+                        <Route path="/AboutMe" component={AboutMe}/>
+                        <Route path="/PostPage/:id" component={PostPage} />
+                        <Route path="/NewPost" component={NewPost} />
+                        <Route path="/Login"><Login onLogin={this.onLogin} /></Route>
+                        <Route path="/Home" component={Home} />
+                        <Redirect from="/" to="/Home" />
+                    </Switch>
+                </Router>
+                <Footer />
+            </div>
+        );
+    }
 }
 
 
-function Latest() {
-    return(
-        <div>
-            <h1>Latest</h1>
-            <p>Blog post #1 <a href="#post">go to page</a></p>
-            <p>Blog post #2 <a href="#post">go to page</a></p>
-            <p>Blog post #3 <a href="#post">go to page</a></p>
-        </div>
-    );
-}
+
 export default App;

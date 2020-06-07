@@ -1,7 +1,7 @@
 {
-  "name": "assignment2",
+  "name": "assignment4",
   "version": "0.1.0",
-  "homepage": "https://lidorc145.github.io/FullStackHw3/assignment2/build/",
+  "homepage": "https://lidorc145.github.io/FullStackHw4/build/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -11,6 +11,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-render-html": "^0.6.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
@@ -33,5 +34,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": "git+https://github.com/Lidorc145/FullStackHw4.git",
+  "author": "Lidor Cohen <LidorC145@Gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lidorc145/FullStackHw4/issues"
   }
 }

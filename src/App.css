@@ -21,13 +21,20 @@ li {
   display: inline-block;
   padding: 5px 10px 5px 10px;
 }
+.NavLink {
+  font-weight: bold;
+
+}
 li.navBorder {
   font-weight: bold;
   padding-left: 1px;
   padding-right: 1px;
 }
-a {
+a:hover {
   color: #135F9D;
+}
+a {
+  color:#000;
 }
 li.rightLi {
   float: right;
