@@ -1,6 +1,9 @@
 import React from 'react';
 import renderHTML from 'react-render-html';
 import emptyImage from '../../emptyImage.png';
+import {
+    Link
+} from "react-router-dom";
 
 var articlesData = [
     {
@@ -49,7 +52,7 @@ class Posts extends React.Component {
 
     render() {
         let articlesObjects = articlesData.map((item,key) => (
-            <a href={'PostPage/'+item.postID}><section className="postSection" id={item.postID} key={key}><img src={item.postImage} alt="" id="postImage#2" className="postImage" />
+            <Link to={'PostPage/'+item.postID}><section className="postSection" id={item.postID} key={key}><img src={item.postImage} alt="" id="postImage#2" className="postImage" />
 
 
                 <div className="postContent">
@@ -58,7 +61,7 @@ class Posts extends React.Component {
                     {renderHTML(item.postPreviewText)}
                 </div>
                 <p className="postFooter">Published {item.postPublishedTime} by {item.postAuther}</p>
-            </section></a>
+            </section></Link>
         ));
 
         return articlesObjects;
